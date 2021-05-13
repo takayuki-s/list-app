@@ -16,7 +16,9 @@ const onClickAdd = () => {
   // 完了ボタン生成
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
-  console.log(completeButton);
+  completeButton.addEventListener("click", () => {
+    alert("完了");
+  });
 
   //削除ボタン生成
   const deleteButton = document.createElement("button");
