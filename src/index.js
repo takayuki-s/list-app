@@ -4,14 +4,27 @@ const onClickAdd = () => {
   // テキストボックスの値を取得し、初期化する
   const inputText = document.getElementById("add-text").value;
   document.getElementById("add-text").value = "";
+  createIncompleteList(inputText);
+};
 
+document
+  .getElementById("add-button")
+  .addEventListener("click", () => onClickAdd());
+
+// 未完了リストから指定の要素を削除
+const deleteFromIncompleteList = (target) => {
+  document.getElementById("incomplete-list").removeChild(target);
+};
+
+// 未完了リストに追加する関数
+const createIncompleteList = (text) => {
   // div生成
   const div = document.createElement("div");
   div.className = "list-row";
 
   // liタグ生成
   const li = document.createElement("li");
-  li.innerText = inputText;
+  li.innerText = text;
 
   // 完了ボタン生成
   const completeButton = document.createElement("button");
@@ -69,13 +82,4 @@ const onClickAdd = () => {
 
   // 未完了のリストに追加
   document.getElementById("incomplete-list").appendChild(div);
-};
-
-document
-  .getElementById("add-button")
-  .addEventListener("click", () => onClickAdd());
-
-// 未完了リストから指定の要素を削除
-const deleteFromIncompleteList = (target) => {
-  document.getElementById("incomplete-list").removeChild(target);
 };
